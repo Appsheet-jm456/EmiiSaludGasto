@@ -1,89 +1,94 @@
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>FACTURA DE GASTO</title>
-		<link rel="stylesheet" href="">
-		<link rel="license" href="https://www.opensource.org/licenses/mit-license/">
-	</head>
-	<body>
-		<header>
-			<h1>FACTURA DE GASTO</h1>
-			<address>
-				<p>DROGERIA EMII SALID</p>
-				<p>NIT 1111111111<br>Calle 84 #24f-04</p>
-				<p>CALI, BARRIO VALLE GRANDE</p>
-			</address>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>FACTURA DE GASTO</title>
+  <link rel="stylesheet" href="https://appsheet-jm456.github.io/EmiiSaludGasto/style.css">
+  <link rel="license" href="https://www.opensource.org/licenses/mit-license/">
+</head>
 
-<div style="float: right;">
-    <img alt="" src="https://n9.cl/mwb7mn" style="width: 100px; height: 100px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title="">
-</div>
+<body>
+  <header>
+    <h1>FACTURA DE GASTO</h1>
+    <address>
+      <p>DROGUERÍA EMII SALUD</p>
+      <p>NIT 25395592<br>Calle 84 #24F-04</p>
+      <p>CALI - BARRIO VALLE GRANDE</p>
+    </address>
 
+    <div style="float: right;">
+      <img alt="Logo" src="https://n9.cl/mwb7mn" style="width: 100px; height: 100px;">
+    </div>
+  </header>
 
-		</header>
-		<article>
-			<h1>Recipient</h1>
-			<address>
-				<p>&lt;&lt;[Proveedores].[Razon Social]&gt;&gt;<br>-</p>
-                <p class="small-text"><br>Tipo: &lt;&lt;[Proveedores].[Tipo]&gt;&gt;</p>
-                <p class="small-text">Cel:&lt;&lt;[Proveedores].[Celular ]&gt;&gt;</p>
-			</address>
-			<table class="meta">
-				<tr>
-					<th><span>Gasto #</span></th>
-					<td><span>&lt;&lt;[Numero_Fact]&gt;&gt;</span></td>
-				</tr>
-				<tr>
-					<th><span>Fecha</span></th>
-					<td><span>&lt;&lt;[Fecha]&gt;&gt;</span></td>
-				</tr>
-				<tr>
-					<th><span>Total</span></th>
-					<td><span>&lt;&lt;[Total]&gt;&gt;</span></td>
-				</tr>
-			</table>
-			<table class="inventory">
-				<thead>
-					<tr>
-						<th><span>items</span></th>
-						<th><span>Concepto</span></th>
-						<th><span>Precio</span></th>
-						<th><span>Cantidad</span></th>
-						<th><span>Subtotal</span></th>
-					</tr>
-				</thead>
-				<tbody>
-				<p><span>&lt;&lt;Start: SELECT(Detalle Gastos[DetGastoID],[GastoID]=[GastoID]) &gt;&gt;</span></p>
-					<tr>
-						<td><a class="cut">-</a>&lt;&lt;[Concepto]&gt;&gt;</td>
-						<td><span></span></td>
-				        <td><span>&lt;&lt;[Precio]&gt;&gt;</span></td>
-						<td><span>&lt;&lt;[Cantidad]&gt;&gt;</span></td>
-						<td><span>&lt;&lt;[Total_Gasto]&gt;&gt;</span></td>
-					</tr>
-				<p><span>&lt;&lt; end &gt;&gt;</span></p>
-				</tbody>
-			</table>
-			<a class="add">+</a>
-			<table class="balance">
-				<tr>
-					<th><span>Total</span></th>
-					<td><span>&lt;&lt;[Total]&gt;&gt;</span></td>
-				</tr>
-				<tr>
-					<th><span>Otros conceptos</span></th>
-					<td><span data-prefix="$"></span><span>0.00</span></td>
-				</tr>
-				<tr>
-					<th><span>Total a pagar</span></th>
-					<td><span>&lt;&lt;[Total]&gt;&gt;</span></td>
-				</tr>
-			</table>
-		</article>
-		<aside>
-			<h1><span>Notas adicionales</span></h1>
-			<div>
-				<p>Factura de Gasto - Creada por AppSheet JM </p>
-			</div>
-		</aside>
-	</body>
+  <article>
+    <h1>Proveedor</h1>
+    <address>
+      <p>&lt;&lt;[Proveedores].[Razon Social]&gt;&gt;</p>
+      <p class="small-text">Tipo: &lt;&lt;[Proveedores].[Tipo]&gt;&gt;</p>
+      <p class="small-text">Cel: &lt;&lt;[Proveedores].[Celular]&gt;&gt;</p>
+    </address>
+
+    <table class="meta">
+      <tr>
+        <th><span>Factura N°</span></th>
+        <td><span>&lt;&lt;[Numero_Fact]&gt;&gt;</span></td>
+      </tr>
+      <tr>
+        <th><span>Fecha</span></th>
+        <td><span>&lt;&lt;[Fecha]&gt;&gt;</span></td>
+      </tr>
+      <tr>
+        <th><span>Total</span></th>
+        <td><span>&lt;&lt;[Total]&gt;&gt;</span></td>
+      </tr>
+    </table>
+
+    <h2>Detalle del Gasto</h2>
+    <table class="inventory">
+      <thead>
+        <tr>
+          <th><span>Item</span></th>
+          <th><span>Concepto</span></th>
+          <th><span>Precio</span></th>
+          <th><span>Cantidad</span></th>
+          <th><span>Subtotal</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <<Start: SELECT([Related Detalle Gastos][DetGastoID], [GastoID] = [_THISROW].[GastoID])>>
+        <tr>
+          <td><span>&lt;&lt;[_ROWNUMBER]&gt;&gt;</span></td>
+          <td><span>&lt;&lt;[Concepto]&gt;&gt;</span></td>
+          <td><span>&lt;&lt;[Precio]&gt;&gt;</span></td>
+          <td><span>&lt;&lt;[Cantidad]&gt;&gt;</span></td>
+          <td><span>&lt;&lt;[Subtotal]&gt;&gt;</span></td>
+        </tr>
+        <<End>>
+      </tbody>
+    </table>
+
+    <table class="balance">
+      <tr>
+        <th><span>Total</span></th>
+        <td><span>&lt;&lt;[Total]&gt;&gt;</span></td>
+      </tr>
+      <tr>
+        <th><span>Otros conceptos</span></th>
+        <td><span>0.00</span></td>
+      </tr>
+      <tr>
+        <th><span>Total a pagar</span></th>
+        <td><strong>&lt;&lt;[Total]&gt;&gt;</strong></td>
+      </tr>
+    </table>
+  </article>
+
+  <aside>
+    <h1><span>Notas adicionales</span></h1>
+    <div>
+      <p>Factura de Gasto - Creada por AppSheet JM</p>
+    </div>
+  </aside>
+</body>
 </html>

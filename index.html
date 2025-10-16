@@ -7,11 +7,11 @@
 	</head>
 	<body>
 		<header>
-			<h1>REMISIÓN</h1>
+			<h1>FACTURA DE GASTO</h1>
 			<address>
-				<p>MI EMPRESA</p>
-				<p>NIT 1111111111<br>Calle 11- 10-33</p>
-				<p>Pereira</p>
+				<p>DROGERIA EMII SALID</p>
+				<p>NIT 1111111111<br>Calle 84 #24f-04</p>
+				<p>CALI, BARRIO VALLE GRANDE</p>
 			</address>
 
 <div style="float: right;">
@@ -23,14 +23,14 @@
 		<article>
 			<h1>Recipient</h1>
 			<address>
-				<p>&lt;&lt;[id_cliente].[Nombre_cliente]&gt;&gt;<br>-</p>
-                <p class="small-text"><br>Email: &lt;&lt;[id_cliente].[Email]&gt;&gt;</p>
-                <p class="small-text">Cel:&lt;&lt;[id_cliente].[Celular]&gt;&gt;</p>
+				<p>&lt;&lt;[Proveedores].[Razon Social]&gt;&gt;<br>-</p>
+                <p class="small-text"><br>Tipo: &lt;&lt;[Proveedores].[Tipo]&gt;&gt;</p>
+                <p class="small-text">Cel:&lt;&lt;[Proveedores].[Celular ]&gt;&gt;</p>
 			</address>
 			<table class="meta">
 				<tr>
-					<th><span>Remisión #</span></th>
-					<td><span>&lt;&lt;[N_factura]&gt;&gt;</span></td>
+					<th><span>Gasto #</span></th>
+					<td><span>&lt;&lt;[Numero_Fact]&gt;&gt;</span></td>
 				</tr>
 				<tr>
 					<th><span>Fecha</span></th>
@@ -38,27 +38,27 @@
 				</tr>
 				<tr>
 					<th><span>Total</span></th>
-					<td><span>&lt;&lt;[TOTAL VENTA]&gt;&gt;</span></td>
+					<td><span>&lt;&lt;[Total]&gt;&gt;</span></td>
 				</tr>
 			</table>
 			<table class="inventory">
 				<thead>
 					<tr>
-						<th><span>Producto</span></th>
-						<th><span>Descripcion</span></th>
-						<th><span>Valor ud</span></th>
-						<th><span>Cantidad</span></th>
+						<th><span>items</span></th>
+						<th><span>Concepto</span></th>
+						<th><span>Precio</span></th>
+						<th><span>Cantiddad</span></th>
 						<th><span>Subtotal</span></th>
 					</tr>
 				</thead>
 				<tbody>
-				<p><span>&lt;&lt;Start: SELECT(DETALLE_VENTAS[id_detalle],[id_encabezado_venta]=[id_encabezado]) &gt;&gt;</span></p>
+				<p><span>&lt;&lt;Start: SELECT(Detalle Gastos[DetGastoID],[GastoID]=[GastoID]) &gt;&gt;</span></p>
 					<tr>
-						<td><a class="cut">-</a>&lt;&lt;[id_producto].[Nombre de producto]&gt;&gt;</td>
+						<td><a class="cut">-</a>&lt;&lt;[Concepto]&gt;&gt;</td>
 						<td><span></span></td>
-				        <td><span>&lt;&lt;[Valor_unitario]&gt;&gt;</span></td>
+				        <td><span>&lt;&lt;[Precio]&gt;&gt;</span></td>
 						<td><span>&lt;&lt;[Cantidad]&gt;&gt;</span></td>
-						<td><span>&lt;&lt;[Subtotal]&gt;&gt;</span></td>
+						<td><span>&lt;&lt;[Total_Gasto]&gt;&gt;</span></td>
 					</tr>
 				<p><span>&lt;&lt; end &gt;&gt;</span></p>
 				</tbody>
@@ -67,7 +67,7 @@
 			<table class="balance">
 				<tr>
 					<th><span>Total</span></th>
-					<td><span>&lt;&lt;[TOTAL VENTA]&gt;&gt;</span></td>
+					<td><span>&lt;&lt;[Total]&gt;&gt;</span></td>
 				</tr>
 				<tr>
 					<th><span>Otros conceptos</span></th>
@@ -75,14 +75,14 @@
 				</tr>
 				<tr>
 					<th><span>Total a pagar</span></th>
-					<td><span>&lt;&lt;[TOTAL VENTA]&gt;&gt;</span></td>
+					<td><span>&lt;&lt;[Total]&gt;&gt;</span></td>
 				</tr>
 			</table>
 		</article>
 		<aside>
 			<h1><span>Notas adicionales</span></h1>
 			<div>
-				<p>Pagos a la cuenta de ahorros bancolombia # </p>
+				<p>Factura de Gasto - Creada por AppSheet JM </p>
 			</div>
 		</aside>
 	</body>
